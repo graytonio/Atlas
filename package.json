@@ -1,6 +1,6 @@
 {
   "name": "atlas",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "src/server/index.js",
   "license": "MIT",
   "scripts": {
@@ -9,7 +9,7 @@
     "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
     "server": "nodemon src/server/index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "release": "standard-version"
+    "release": "standard-version && git push --follow-tags origin master"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
