@@ -28,3 +28,9 @@ The project includes a dev/hot reload mode which can be run with
 ```bash
 yarn dev
 ```
+
+## To-Do
+
+- [ ] Move DB to /data in docker container
+- [ ] Create UI For Adding Services
+- [ ] Create Plugin System
