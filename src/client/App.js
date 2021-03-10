@@ -1,12 +1,13 @@
-import React from "react";
-import { Admin, Resource } from "react-admin";
+import React from 'react';
+import { Admin, Resource } from 'react-admin';
+import { ServiceList } from './components/Services';
 
-import dataProvider from "./api/dataProvider";
+import dataProvider from './api/dataProvider';
 
 export default function App() {
   return (
     <Admin dataProvider={dataProvider}>
-      <Resource name="users" list={UserList} />
+      <Resource name="services" list={ServiceList} />
     </Admin>
   );
 }
