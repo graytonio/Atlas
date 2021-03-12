@@ -8,17 +8,21 @@ export default {
     const { page, perPage } = params.pagination;
     const { field, order } = params.sort;
 
+    console.log(field, order);
+
     const query = {
-      sort: JSON.stringify([field, order]),
-      pagination: JSON.stringify([page, perPage]),
+      field,
+      order,
+      page: JSON.stringify(page),
+      perPage: JSON.stringify(perPage),
       filter: JSON.stringify(params.filter),
     };
 
     const url = `/api/${resource}?${stringify(query)}`;
 
     return httpClient(url).then(({ json }) => ({
-      data: json.data,
-      total: json.total,
+      data: json.data.rows,
+      total: json.data.count,
     }));
   },
 

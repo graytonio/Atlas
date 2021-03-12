@@ -7,7 +7,7 @@ import dataProvider from './api/dataProvider';
 export default function App() {
   return (
     <Admin dataProvider={dataProvider}>
-      <Resource name="services" list={ServiceList} />
+      <Resource name="service" list={ServiceList} />
     </Admin>
   );
 }

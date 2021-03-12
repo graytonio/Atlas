@@ -21,7 +21,7 @@
     "react": "^16.5.2",
     "react-admin": "^3.13.1",
     "react-dom": "^16.5.2",
-    "sqlite": "^4.0.19",
+    "sequelize": "^6.5.0",
     "sqlite3": "^5.0.2"
   },
   "devDependencies": {
