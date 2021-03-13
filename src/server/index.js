@@ -50,8 +50,6 @@ app.get('/api/service', async (req, res, next) => {
     filter = {},
   } = req.query;
 
-  console.log(order);
-
   const results = await Service.findAndCountAll({
     where: JSON.parse(filter),
     limit: perPage,
@@ -65,8 +63,17 @@ app.get('/api/service', async (req, res, next) => {
 // Update Service
 app.put('/api/service/:id', async (req, res) => {});
 
-// Delete Service
-app.delete('/api/service/:id', async (req, res) => {});
+// Delete Servicep
+app.delete('/api/service/:id', async (req, res, next) => {
+  const { id } = req.params;
+  const results = await Service.destroy({
+    where: {
+      id,
+    },
+  }).catch(next);
+
+  sendResults(res, results);
+});
 
 // Error Handler
 app.use((err, req, res) => {

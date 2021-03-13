@@ -1,3 +1,4 @@
 import ServiceList from './ServiceList';
+import ServiceCreate from './ServiceCreate';
 
-export { ServiceList };
+export { ServiceList, ServiceCreate };

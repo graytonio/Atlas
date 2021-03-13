@@ -67,13 +67,16 @@ export default {
     }).then(({ json }) => ({ data: json.data })),
 
   updateMany: (resource, params) => {
-    const query = {
-      filter: JSON.stringify({ id: params.ids }),
-    };
-    return httpClient(`/api/${resource}?${stringify(query)}`, {
-      method: 'PUT',
-      body: JSON.stringify(params.data),
-    }).then(({ json }) => ({ data: json.data }));
+    const promsises = params.ids.map((id) =>
+      httpClient(`/api/${resource}/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify(params.data),
+      }).then(({ json }) => json.data)
+    );
+
+    return Promise.all(promsises).then((records) => ({
+      data: records,
+    }));
   },
 
   create: (resource, params) =>
@@ -90,12 +93,14 @@ export default {
     }).then(({ json }) => ({ data: json.data })),
 
   deleteMany: (resource, params) => {
-    const query = {
-      filter: JSON.stringify({ id: params.ids }),
-    };
-    return httpClient(`/api/${resource}?${stringify(query)}`, {
-      method: 'DELETE',
-      body: JSON.stringify(params.data),
-    }).then(({ json }) => ({ data: json }));
+    const promsises = params.ids.map((id) =>
+      httpClient(`/api/${resource}/${id}`, {
+        method: 'DELETE',
+      }).then(({ json }) => json.data)
+    );
+
+    return Promise.all(promsises).then((records) => ({
+      data: records,
+    }));
   },
 };
