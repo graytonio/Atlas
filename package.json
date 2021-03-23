@@ -4,11 +4,9 @@
   "main": "src/server/index.js",
   "license": "MIT",
   "scripts": {
-    "build": "webpack --mode production",
     "start": "node src/server/index.js",
-    "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
     "server": "nodemon src/server/index.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "npm run server",
     "release": "standard-version && git push --follow-tags origin master"
   },
   "dependencies": {
