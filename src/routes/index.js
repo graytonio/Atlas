@@ -1,3 +1,4 @@
 const ServiceRouter = require('./ServiceRoutes');
+const ClientRouter = require('./ClientRoutes');
 
-module.exports = { ServiceRouter };
+module.exports = { ServiceRouter, ClientRouter };

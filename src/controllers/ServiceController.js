@@ -5,9 +5,8 @@ const createService = ({ name, url, icon }) =>
 
 const getServiceById = ({ id }) => Service.findByPk(id);
 
-const getAllServices = ({ filter, perPage, page, field, order }) =>
+const getAllServices = ({ perPage, page, field, order }) =>
   Service.findAndCountAll({
-    where: JSON.parse(filter),
     limit: perPage,
     offset: (page - 1) * perPage,
     order: [[field, order]],

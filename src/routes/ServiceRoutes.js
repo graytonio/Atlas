@@ -17,29 +17,22 @@ router.post('/', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
   const { id } = req.params;
-  const results = await ServiceController.getAllServices(id).catch(next);
+  const results = await ServiceController.getServiceById(id).catch(next);
 
-  sendResponse(res, results);
+  sendResponse({ res, results });
 });
 
 router.get('/', async (req, res, next) => {
-  const {
-    field = 'id',
-    order = 'ASC',
-    page = 1,
-    perPage = 25,
-    filter = {},
-  } = req.query;
+  const { field = 'id', order = 'ASC', page = 1, perPage = 25 } = req.query;
 
   const results = await ServiceController.getAllServices({
     field,
     order,
     page,
     perPage,
-    filter,
   }).catch(next);
 
-  sendResponse(res, results);
+  sendResponse({ res, results });
 });
 
 router.put('/:id', async (req, res, next) => {
@@ -50,14 +43,14 @@ router.put('/:id', async (req, res, next) => {
     service,
   }).catch(next);
 
-  sendResponse(res, results);
+  sendResponse({ res, results });
 });
 
 router.delete('/:id', async (req, res, next) => {
   const { id } = req.params;
   const results = await ServiceController.destroy({ id }).catch(next);
 
-  sendResponse(res, results);
+  sendResponse({ res, results });
 });
 
 module.exports = router;

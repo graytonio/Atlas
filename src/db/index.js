@@ -2,7 +2,8 @@ const { Sequelize, DataTypes } = require('sequelize');
 
 const sequelize = new Sequelize({
   dialect: 'sqlite',
-  storage: './inventory.db',
+  storage: process.env.DB_PATH || './src/db/inventory.db',
+  logging: process.env.SQL_LOGGING === 'true' ? console.log : null,
 });
 
 const Service = sequelize.define('User', {
